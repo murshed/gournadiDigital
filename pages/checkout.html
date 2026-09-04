@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>চেকআউট — Gournadi Digital</title>
+<meta name="description" content="ডেলিভারি ঠিকানা, জোন, পেমেন্ট পদ্ধতি বেছে অর্ডার কনফার্ম করুন।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="wrap page-head"><h1>চেকআউট</h1><p>ঠিকানা ও পেমেন্ট দিয়ে অর্ডার কনফার্ম করুন।</p></div>
+
+<div class="wrap section section--tight">
+  <div class="checkout-grid">
+    <form data-checkout-form>
+      <div class="fields" data-fields></div>
+      <div class="zones"><h4 style="font-size:15px;margin-bottom:8px">ডেলিভারি জোন</h4></div>
+      <div style="margin-top:20px"><label style="font-size:14px;font-weight:600">অর্ডার নোট (ঐচ্ছিক)</label><textarea id="chk-note"></textarea></div>
+
+      <h3 style="font-size:19px;margin-top:34px;margin-bottom:14px">পেমেন্ট পদ্ধতি</h3>
+      <div class="pays" data-payments></div>
+      <div style="margin-top:22px">
+        <button type="submit" class="btn btn--primary btn--lg btn--block btn-runner"><span>অর্ডার কনফার্ম করুন</span></button>
+      </div>
+      <p class="coupon-hint" style="margin-top:14px;text-align:center">কাউকে অর্ডার সম্পন্ন হতে পারে না — ফোন নম্বরটি সঠিক দিন।</p>
+    </form>
+    <aside class="summary" data-checkout-summary></aside>
+  </div>
+</div>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/popup.js"></script>
+<script src="../js/checkout.js"></script>
+</body>
+</html>

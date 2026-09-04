@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-title>ব্লগ — Gournadi Digital</title>
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<main class="wrap" style="padding:30px 20px 64px;max-width:940px">
+  <div data-content></div>
+</main>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  UI.mount();
+  const slug = new URLSearchParams(location.search).get('slug');
+  const post = CONFIG.blog.posts.find(p => p.slug === slug) || CONFIG.blog.posts[0];
+
+  document.title = post.title + ' — Gournadi Digital';
+
+  const initials = post.author.split(' ').map(s => s[0]).join('').slice(0, 2).toUpperCase();
+  const related = CONFIG.blog.posts.filter(p => p.slug !== post.slug).slice(0, 3);
+
+  const content = document.querySelector('[data-content]');
+  content.innerHTML = `
+    <div class="crumbs-bar" style="margin:-30px -20px 24px">
+      <div class="wrap">
+        <a href="../index.html">হোম</a><span class="sep">›</span>
+        <a href="blog.html">ব্লগ</a><span class="sep">›</span>
+        <span>${post.cat}</span>
+      </div>
+    </div>
+
+    <div class="post-hero"><img src="../${post.image}" alt="${post.title}"></div>
+
+    <header class="post-header">
+      <span class="post-card__cat">${post.cat}</span>
+      <h1>${post.title}</h1>
+      <div class="post-meta">
+        <span class="avatar">${initials}</span>
+        <span><b>${post.author}</b></span>
+        <span>·</span>
+        <span>${new Date(post.date).toLocaleDateString('bn-BD', { year:'numeric', month:'long', day:'numeric' })}</span>
+        <span>·</span>
+        <span>${post.read} মিনিট পড়া</span>
+      </div>
+    </header>
+
+    <article>
+      ${UI.blogPostBody(post)}
+
+      <div class="post-share">
+        <span>শেয়ার করুন:</span>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Facebook">${UI.ICON.fb}</a>
+        <a href="https://wa.me/?text=${encodeURIComponent(post.title + ' ' + location.href)}" target="_blank" rel="noopener" aria-label="WhatsApp">${UI.ICON.wa}</a>
+        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="X">${UI.ICON.arrow}</a>
+        <a href="mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(location.href)}" aria-label="Email">${UI.ICON.mail}</a>
+      </div>
+
+      <div class="post-cta">
+        <div>
+          <h3>পছন্দ হয়েছে? এখনই দেখুন</h3>
+          <p>আমাদের সেরা গ্যাজেট — ৬৪ জেলায় ডেলিভারি, ক্যাশ অন ডেলিভারি।</p>
+        </div>
+        <a class="btn btn--primary btn-runner" href="shop.html" style="white-space:nowrap"><span>পণ্য দেখুন</span></a>
+      </div>
+
+      <h2 style="margin:48px 0 18px;font-size:22px">আরও পড়ুন</h2>
+      <div class="blog-grid">
+        ${related.map(UI.blogCard).join('')}
+      </div>
+    </article>
+  `;
+});
+</script>
+</body>
+</html>

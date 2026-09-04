@@ -1,0 +1,31 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / build tooling (none used today, but future-proofing)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# OS-generated temp
+*.tmp
+*.bak
+*.orig
+*~

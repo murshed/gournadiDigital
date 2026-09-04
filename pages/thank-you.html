@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>অর্ডার সফল — Gournadi Digital</title>
+<meta name="description" content="আপনার অর্ডার সফলভাবে স্থাপন হয়েছে। আমরা কনফার্ম করব।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="wrap">
+  <div class="thanks">
+    <div class="thanks__tick">${UI.ICON.check}</div>
+    <h1 style="font-size:clamp(26px,3.6vw,38px)">অর্ডার সফলভাবে জমা হয়েছে</h1>
+    <p>আপনার অর্ডার আইডি <b>GD-${new Date().getTime().toString(36).toUpperCase()}</b></p>
+    <p class="coupon-hint">আমরা তোমার ফোন নম্বরে ${CONFIG.contact.phoneLabel} থেকে কল করব।</p>
+    <a class="btn btn--primary btn--block" href="cart.html">আরও কিনুন</a>
+    <a class="btn btn--ghost btn--block" href="index.html">মূল পৃষ্ঠা</a>
+  </div>
+</div>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  UI.mount();
+  const order = JSON.parse(sessionStorage.getItem('gd_last_order') || '{}');
+  if (order.id) {
+    document.querySelector('b').textContent = order.id;
+    document.querySelector('[data-phone]') && (document.querySelector('[data-phone]').textContent = order.customer.phone);
+  }
+});
+</script>
+</body>
+</html>

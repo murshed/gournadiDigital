@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <rect width="1200" height="400" fill="#123A2C"/>
+  <g stroke="#C8923C" stroke-opacity=".4" fill="none"><circle cx="1000" cy="200" r="120"/><rect x="60" y="60" width="1080" height="280" rx="12"/></g>
+  <text x="600" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#8FA79B" letter-spacing="6">1200 × 400 PROMO</text>
+</svg>

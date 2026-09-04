@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>সব পণ্য — Gournadi Digital</title>
+<meta name="description" content="ক্যাটাগরি, দাম, ব্র্যান্ড আর রেটিং দিয়ে ফিল্টার করে পণ্য খুঁজুন।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="wrap page-head">
+  <h1 data-title>সব পণ্য</h1>
+  <p data-desc>অরিজিনাল পণ্য, ক্যাশ অন ডেলিভারি আর ৬৪ জেলায় ডেলিভারি।</p>
+</div>
+
+<div class="wrap section section--tight">
+  <div class="shop">
+
+    <!-- FILTERS -->
+    <aside class="filters gborder" aria-label="ফিল্টার">
+      <div class="fgroup">
+        <b>ক্যাটাগরি</b>
+        <div data-f-cats></div>
+      </div>
+      <div class="fgroup">
+        <b>দামের সীমা</b>
+        <div class="frange">
+          <input type="range" id="fprice" min="0" max="20000" step="500" value="20000" data-f-price>
+          <output for="fprice" data-f-price-out>৳২০,০০০</output>
+        </div>
+      </div>
+      <div class="fgroup">
+        <b>ব্র্যান্ড</b>
+        <div data-f-brands></div>
+      </div>
+      <div class="fgroup">
+        <b>রেটিং</b>
+        <div data-f-rating></div>
+      </div>
+      <div class="fgroup">
+        <b>স্টক</b>
+        <label class="fopt"><input type="checkbox" data-f-instock> <span>শুধু স্টকে আছে</span></label>
+        <label class="fopt"><input type="checkbox" data-f-flash> <span>ফ্ল্যাশ সেল</span></label>
+      </div>
+      <button class="btn btn--ghost btn--block" data-f-reset style="margin-top:14px">ফিল্টার রিসেট</button>
+    </aside>
+
+    <!-- RESULTS -->
+    <div>
+      <div class="toolbar">
+        <span class="toolbar__count" data-count></span>
+        <label>
+          <span class="sr">সাজান</span>
+          <select class="select" data-sort>
+            <option value="popular">জনপ্রিয়তা</option>
+            <option value="newest">নতুন আগে</option>
+            <option value="price-asc">দাম কম → বেশি</option>
+            <option value="price-desc">দাম বেশি → কম</option>
+            <option value="rating">রেটিং</option>
+          </select>
+        </label>
+      </div>
+      <div class="pgrid" data-results></div>
+      <div class="pager" data-pager></div>
+    </div>
+
+  </div>
+</div>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/popup.js"></script>
+<script src="../js/shop.js"></script>
+</body>
+</html>

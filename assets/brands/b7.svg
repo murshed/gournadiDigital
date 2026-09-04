@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" rx="8" fill="#F4F1E8"/>
+  <g fill="none" stroke="#9A927A" stroke-width="1.4">
+    <circle cx="42" cy="40" r="15"/>
+    <path d="M70 30 h96 M70 40 h72 M70 50 h58"/>
+</g>
+  <text x="100" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#B0A78D">200 × 80 brand logo</text>
+</svg>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ব্লগ — Gournadi Digital</title>
+<meta name="description" content="গ্যাজেট গাইড, রিভিউ, অফার — Gournadi Digital ব্লগ।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<section class="page-hero">
+  <div class="wrap page-hero__inner">
+    <div class="crumbs"><a href="../index.html">হোম</a><span class="sep">/</span><span>ব্লগ</span></div>
+    <span class="page-hero__chip">গ্যাজেট গাইড · রিভিউ · টিপস</span>
+    <h1>ব্লগ</h1>
+    <p>সঠিক গ্যাজেট বেছে নিতে সাহায্য করি — কেনার আগে যা জানা দরকার, সব এখানে।</p>
+  </div>
+</section>
+
+<main class="wrap" style="padding:40px 20px 64px">
+  <div class="blog-layout">
+    <div>
+      <div class="blog-grid" data-grid></div>
+      <div id="empty" style="display:none;text-align:center;padding:60px 20px;color:var(--c-muted)">
+        <p style="font-size:16px">এই ক্যাটাগরিতে এখনো কোনো পোস্ট নেই।</p>
+        <a class="btn btn--ghost" href="blog.html" style="margin-top:12px">সব পোস্ট দেখুন</a>
+      </div>
+    </div>
+
+    <aside class="blog-aside">
+      <div>
+        <h4>ক্যাটাগরি</h4>
+        <div class="cats" data-cats></div>
+      </div>
+      <div>
+        <h4>সাম্প্রতিক পোস্ট</h4>
+        <div class="recent" data-recent></div>
+      </div>
+      <div class="post-cta" style="margin:0;padding:22px;border-radius:14px">
+        <h3 style="font-size:18px;margin:0 0 4px;color:#fff">নতুন পোস্ট পেতে</h3>
+        <p style="margin:0;color:#B4C9BF;font-size:13.5px">WhatsApp-এ যোগ দিন — সবার আগে অফার পাবেন।</p>
+        <a class="btn btn--primary btn--block btn-runner" style="margin-top:12px" href="https://wa.me/8801711000000"><span>যোগ দিন</span></a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  UI.mount();
+
+  const cat = new URLSearchParams(location.search).get('cat') || 'সব';
+  const posts = CONFIG.blog.posts.filter(p => cat === 'সব' || p.cat === cat);
+  const grid = document.querySelector('[data-grid]');
+  const empty = document.querySelector('#empty');
+
+  if (posts.length) {
+    grid.innerHTML = posts.map(UI.blogCard).join('');
+    empty.style.display = 'none';
+  } else {
+    grid.innerHTML = '';
+    empty.style.display = '';
+  }
+
+  // category chips
+  const cats = ['সব', ...new Set(CONFIG.blog.posts.map(p => p.cat))];
+  document.querySelector('[data-cats]').innerHTML = cats.map(c =>
+    `<a href="?cat=${encodeURIComponent(c)}" class="${c === cat ? 'is-active' : ''}">${c}</a>`
+  ).join('');
+
+  // recent
+  document.querySelector('[data-recent]').innerHTML = CONFIG.blog.posts.slice(0, 4).map(p => `
+    <a href="blog-post.html?slug=${encodeURIComponent(p.slug)}">
+      <img src="../${p.image}" alt="">
+      <div>
+        <span>${p.title}</span>
+        <small>${p.author} · ${p.read} মিনিট</small>
+      </div>
+    </a>
+  `).join('');
+});
+</script>
+</body>
+</html>

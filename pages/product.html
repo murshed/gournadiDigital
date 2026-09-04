@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t>পণ্যের বিবরণ — Gournadi Digital</title>
+<meta name="description" content="পণ্যের বিস্তারিত, দাম, স্টক, ডেলিভারি তথ্য ও রিভিউ।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<!-- 1. TOP: gallery + action ---------------------------------------------- -->
+<div class="wrap">
+  <div class="pdp">
+    <div>
+      <div class="gallery__main gborder" data-gal-main></div>
+      <div class="gallery__thumbs" data-gal-thumbs role="tablist" aria-label="ছবি"></div>
+    </div>
+    <div data-buy></div>
+  </div>
+</div>
+
+<!-- 2. PRODUCT DETAILS ---------------------------------------------------- -->
+<section class="pdp-sec">
+  <div class="wrap">
+    <h2>পণ্যের বিবরণ</h2>
+    <div class="prose" data-details></div>
+    <h2 style="margin-top:34px;font-size:19px">স্পেসিফিকেশন</h2>
+    <table class="spec" data-spec></table>
+  </div>
+</section>
+
+<!-- 3. SIZE CHART (auto-hidden when product.sizeChart is falsy) ----------- -->
+<section class="pdp-sec" data-sizechart-sec hidden>
+  <div class="wrap">
+    <h2>সাইজ চার্ট</h2>
+    <table class="spec" data-sizechart></table>
+    <p class="coupon-hint" style="margin-top:12px">মাপ ইঞ্চিতে দেওয়া। ±০.৫ ইঞ্চি পার্থক্য হতে পারে।</p>
+  </div>
+</section>
+
+<!-- 4. DELIVERY DETAILS --------------------------------------------------- -->
+<section class="pdp-sec">
+  <div class="wrap">
+    <h2>ডেলিভারি তথ্য</h2>
+    <div class="dlv" data-delivery></div>
+  </div>
+</section>
+
+<!-- 5. REVIEWS ------------------------------------------------------------ -->
+<section class="pdp-sec">
+  <div class="wrap">
+    <h2>রিভিউ</h2>
+    <div class="rgrid" data-reviews></div>
+    <form class="rvform gborder" data-review-form>
+      <b>রিভিউ লিখুন</b>
+      <div class="field"><label for="rv-name">আপনার নাম</label><input id="rv-name" required placeholder="নাম লিখুন"></div>
+      <div class="field">
+        <label for="rv-rate">রেটিং</label>
+        <select id="rv-rate" class="select"><option value="5">৫ ★</option><option value="4">৪ ★</option><option value="3">৩ ★</option><option value="2">২ ★</option><option value="1">১ ★</option></select>
+      </div>
+      <div class="field"><label for="rv-text">আপনার মন্তব্য</label><textarea id="rv-text" required placeholder="পণ্যটি কেমন লাগল?"></textarea></div>
+      <button class="btn btn--primary" type="submit">রিভিউ জমা দিন</button>
+      <p class="coupon-hint">যারা পণ্য কিনেছেন শুধু তারাই রিভিউ দিতে পারবেন — যাচাই ব্যাকএন্ডে যোগ হবে।</p>
+    </form>
+  </div>
+</section>
+
+<!-- 6. COMBO PACKAGE ------------------------------------------------------ -->
+<section class="pdp-sec">
+  <div class="wrap">
+    <h2>কম্বো প্যাকেজ</h2>
+    <div class="combo gborder" data-combo></div>
+  </div>
+</section>
+
+<!-- 7. RELATED PRODUCTS --------------------------------------------------- -->
+<section class="pdp-sec">
+  <div class="wrap">
+    <h2>সম্পর্কিত পণ্য</h2>
+    <div class="pgrid" data-related></div>
+  </div>
+</section>
+
+<!-- 8. STICKY BAR --------------------------------------------------------- -->
+<div class="stickybar" data-sticky data-show="false">
+  <div class="wrap stickybar__in" data-sticky-in></div>
+</div>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/popup.js"></script>
+<script src="../js/product.js"></script>
+</body>
+</html>

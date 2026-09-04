@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>যোগাযোগ — Gournadi Digital</title>
+<meta name="description" content="ফোন, WhatsApp, ইমেইল, ঠিকানা — যেকোনো প্রশ্নে আমাদের সাথে যোগাযোগ করুন।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<section class="page-hero">
+  <div class="wrap page-hero__inner">
+    <div class="crumbs"><a href="../index.html">হোম</a><span class="sep">/</span><span>যোগাযোগ</span></div>
+    <span class="page-hero__chip">সাড়া দিই ২ ঘণ্টার মধ্যে</span>
+    <h1>যোগাযোগ করুন</h1>
+    <p>অর্ডার, রিটার্ন, বাল্ক হোয়াইট — যেকোনো বিষয়ে আমরা এখানে আছি।</p>
+  </div>
+</section>
+
+<main class="wrap" style="padding:40px 20px 64px">
+  <div class="contact-grid">
+    <div>
+      <div class="contact-cards" data-cards></div>
+
+      <div class="map-card">
+        <div class="map-card__top">
+          <h3>📍 আমাদের শো-রুম</h3>
+          <a href="https://maps.google.com/?q=Gournadi+Bus+Stand+Barishal" target="_blank" rel="noopener">Google Maps এ খুলুন →</a>
+        </div>
+        <div class="map-card__map">
+          <div class="map-card__pin">
+            Gournadi Digital
+            <span data-addr>গৌরনদী বাসস্ট্যান্ড, বরিশাল ৮২৩০</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-card">
+        <h3>🕒 কার্যকর সময়</h3>
+        <div data-hours></div>
+      </div>
+
+      <div class="hours-card">
+        <h3>🌐 সোশ্যাল মিডিয়া</h3>
+        <p style="margin:0 0 12px;color:var(--c-muted);font-size:14px">নতুন অফার ও লঞ্চ সবার আগে জানতে ফলো করুন।</p>
+        <div class="social-row" data-social></div>
+      </div>
+    </div>
+
+    <aside>
+      <form class="contact-form" data-form>
+        <h2>একটি মেসেজ পাঠান</h2>
+        <p class="sub">নিচের ফর্ম পূরণ করুন — ২ ঘণ্টার মধ্যে উত্তর দিচ্ছি।</p>
+
+        <div class="row">
+          <div>
+            <label for="cf-name">আপনার নাম *</label>
+            <input id="cf-name" name="name" type="text" required placeholder="পুরো নাম">
+          </div>
+          <div>
+            <label for="cf-phone">মোবাইল *</label>
+            <input id="cf-phone" name="phone" type="tel" required placeholder="০১XXXXXXXXX">
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="cf-email">ইমেইল</label>
+            <input id="cf-email" name="email" type="email" placeholder="example@mail.com">
+          </div>
+          <div>
+            <label for="cf-subject">বিষয়</label>
+            <select id="cf-subject" name="subject">
+              <option>অর্ডার সংক্রান্ত</option>
+              <option>রিটার্ন / রিফান্ড</option>
+              <option>বাল্ক / হোয়াইট-লেবেল</option>
+              <option>পার্টনারশিপ</option>
+              <option>অন্যান্য</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="cf-msg">আপনার মেসেজ *</label>
+          <textarea id="cf-msg" name="message" required placeholder="আপনার প্রশ্ন বা অনুরোধ লিখুন…"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn--primary btn-runner"><span>মেসেজ পাঠান</span></button>
+          <span class="small">আমরা আপনার তথ্য গোপন রাখি।</span>
+        </div>
+      </form>
+    </aside>
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  UI.mount();
+
+  // Contact cards
+  const cards = [
+    { icon:UI.ICON.phone, label:'কল করুন',  value:CONFIG.contact.phoneLabel, sub:'সকাল ১০টা – রাত ৯টা', href:'tel:'+CONFIG.contact.phone },
+    { icon:UI.ICON.wa,    label:'WhatsApp',  value:CONFIG.contact.phoneLabel, sub:'দ্রুত রিপ্লাই',       href:'https://wa.me/'+CONFIG.contact.whatsapp },
+    { icon:UI.ICON.mail,  label:'ইমেইল',    value:CONFIG.contact.email,      sub:'২৪ ঘণ্টার মধ্যে উত্তর', href:'mailto:'+CONFIG.contact.email },
+    { icon:UI.ICON.msg,   label:'Messenger', value:'@GournadiDigital',        sub:'ফেসবুক চ্যাট',       href:CONFIG.social.messenger },
+  ];
+  document.querySelector('[data-cards]').innerHTML = cards.map(c => `
+    <a class="contact-card" href="${c.href}" target="_blank" rel="noopener">
+      <span class="contact-card__icon">${c.icon}</span>
+      <div>
+        <small>${c.label}</small>
+        <b>${c.value}</b>
+        <p>${c.sub}</p>
+      </div>
+    </a>
+  `).join('');
+
+  // Hours
+  const days = [
+    ['সোমবার','10:00 – 21:00'],
+    ['মঙ্গলবার','10:00 – 21:00'],
+    ['বুধবার','10:00 – 21:00'],
+    ['বৃহস্পতিবার','10:00 – 21:00'],
+    ['শুক্রবার','14:00 – 21:00'],
+    ['শনিবার','10:00 – 21:00'],
+    ['রবিবার','10:00 – 21:00'],
+  ];
+  const today = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'][new Date().getDay()];
+  document.querySelector('[data-hours]').innerHTML = days.map(([d, t]) => {
+    const isToday = d === today;
+    return `<div class="hours-row ${isToday ? 'is-today' : ''}">
+      <b>${isToday ? '<span class="dot"></span>' : ''}${d}${isToday ? ' (আজ)' : ''}</b>
+      <span>${t}</span>
+    </div>`;
+  }).join('');
+
+  // Social row
+  const socials = [
+    { label:'Facebook',  href:CONFIG.social.facebook,  icon:UI.ICON.fb },
+    { label:'Instagram', href:CONFIG.social.instagram, icon:UI.ICON.ig },
+    { label:'YouTube',   href:CONFIG.social.youtube,   icon:UI.ICON.yt },
+    { label:'WhatsApp',  href:'https://wa.me/'+CONFIG.contact.whatsapp, icon:UI.ICON.wa },
+  ];
+  document.querySelector('[data-social]').innerHTML = socials.map(s =>
+    `<a href="${s.href}" target="_blank" rel="noopener">${s.icon} ${s.label}</a>`
+  ).join('');
+
+  // Form
+  const form = document.querySelector('[data-form]');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd.entries());
+    // build WhatsApp prefilled message (no backend needed for contact form)
+    const txt = `হ্যালো Gournadi Digital,\n\nনাম: ${data.name}\nফোন: ${data.phone}\nইমেইল: ${data.email || '—'}\nবিষয়: ${data.subject}\n\n${data.message}`;
+    UI.toast('মেসেজ পাঠানো হচ্ছে…');
+    setTimeout(() => {
+      window.open('https://wa.me/'+CONFIG.contact.whatsapp+'?text='+encodeURIComponent(txt), '_blank');
+      form.reset();
+    }, 400);
+  });
+});
+</script>
+</body>
+</html>

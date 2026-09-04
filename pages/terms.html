@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ব্যবহারের শর্তাবলি — Gournadi Digital</title>
+<meta name="description" content="Gournadi Digital ওয়েবসাইট ও সেবা ব্যবহারের শর্তাবলি।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<section class="page-hero">
+  <div class="wrap page-hero__inner">
+    <div class="crumbs"><a href="../index.html">হোম</a><span class="sep">/</span><span>শর্তাবলি</span></div>
+    <span class="page-hero__chip">সর্বশেষ আপডেট: ২০২৬-০৯-০১</span>
+    <h1 data-terms-title>ব্যবহারের শর্তাবলি</h1>
+    <p>সাইট ব্যবহার করে আপনি নিচের শর্তাবলীতে সম্মত হচ্ছেন। পড়ুন, বুঝুন, নিশ্চিন্তে কেনাকাটা করুন।</p>
+  </div>
+</section>
+
+<div class="crumbs-bar">
+  <div class="wrap">
+    <a href="../index.html">হোম</a><span class="sep">›</span>
+    <a href="#">সহায়তা</a><span class="sep">›</span>
+    <span>শর্তাবলি</span>
+  </div>
+</div>
+
+<main class="wrap" style="padding:40px 20px 64px">
+  <nav class="legal__toc" data-toc>
+    <h4>এই পেজে</h4>
+    <ol></ol>
+  </nav>
+  <div data-terms-body></div>
+</main>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  UI.mount();
+  const L = CONFIG.legal.terms;
+  document.querySelector('[data-terms-title]').textContent = L.title;
+  const body = document.querySelector('[data-terms-body]');
+  body.innerHTML = UI.legal('terms');
+
+  const ol = document.querySelector('[data-toc] ol');
+  if (ol) {
+    L.sections.forEach(s => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#${UI.slugify(s.h)}">${s.h}</a>`;
+      ol.append(li);
+    });
+  }
+});
+</script>
+</body>
+</html>

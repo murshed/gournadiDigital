@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>রিটার্ন ও রিফান্ড — Gournadi Digital</title>
+<meta name="description" content="Gournadi Digital এর রিটার্ন ও রিফান্ড পলিসি — ৩ দিনের রিটার্ন, সহজ এক্সচেঞ্জ।">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div data-header></div>
+
+<section class="page-hero">
+  <div class="wrap page-hero__inner">
+    <div class="crumbs"><a href="../index.html">হোম</a><span class="sep">/</span><span>রিটার্ন পলিসি</span></div>
+    <span class="page-hero__chip">৩ দিনের রিটার্ন · ফ্রি পিকআপ</span>
+    <h1 data-returns-title>রিটার্ন ও রিফান্ড পলিসি</h1>
+    <p>সহজ শর্ত, দ্রুত রিফান্ড। কোন জটিলতা নেই — কারণ আমরা চাই আপনি সন্তুষ্ট থাকুন।</p>
+  </div>
+</section>
+
+<div class="crumbs-bar">
+  <div class="wrap">
+    <a href="../index.html">হোম</a><span class="sep">›</span>
+    <a href="#">সহায়তা</a><span class="sep">›</span>
+    <span>রিটার্ন পলিসি</span>
+  </div>
+</div>
+
+<main class="wrap" style="padding:40px 20px 64px">
+  <nav class="legal__toc" data-toc>
+    <h4>এই পেজে</h4>
+    <ol></ol>
+  </nav>
+  <div data-returns-body></div>
+
+  <div class="post-cta">
+    <div>
+      <h3>এখনো কোনো প্রশ্ন আছে?</h3>
+      <p>আমাদের সাপোর্ট টিম ১০টা – রাত ৯টা পর্যন্ত সাহায্য করতে প্রস্তুত।</p>
+    </div>
+    <a class="btn btn--primary btn-runner" href="contact.html" style="white-space:nowrap"><span>যোগাযোগ করুন</span></a>
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/ui.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  UI.mount();
+  const L = CONFIG.legal.returns;
+  document.querySelector('[data-returns-title]').textContent = L.title;
+  const body = document.querySelector('[data-returns-body]');
+  body.innerHTML = UI.legal('returns');
+
+  // build TOC from sections
+  const ol = document.querySelector('[data-toc] ol');
+  if (ol) {
+    L.sections.forEach(s => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#${UI.slugify(s.h)}">${s.h}</a>`;
+      ol.append(li);
+    });
+  }
+  UI.bindAccordion(body);
+});
+</script>
+</body>
+</html>
